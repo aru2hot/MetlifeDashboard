@@ -1,0 +1,3 @@
+#wrapper-container {float: left; }
+#wrapper-container #key-release,#releases-one,#releases-two,#upcoming-release,#metrics{float:left}
+.ie8 .vertical-text{ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); margin-left:6px; margin-top: 0; margin-bottom:2px; }

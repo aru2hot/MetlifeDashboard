@@ -1,0 +1,460 @@
+/*****************************************
+* GTO/ART Custom CSS for BootStrap v3.3.4
+* v1.0 December, 2015 by Clay Merritt
+* General styles for all devices.
+*****************************************/
+
+body,
+input
+button,
+select,
+textarea,
+.navbar-search .search-query {
+	/*font-family: "Ubuntu","Helvetica Neue",Helvetica,Arial,sans-serif;*/
+	font-family: "sans-serif;
+	/* font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif; */
+	/* font-family: "Exo","Helvetica Neue",Helvetica,Arial,sans-serif; */
+}
+a{
+	color: #006AB6;
+}
+#footer-area {
+	position: fixed;
+	bottom: 0;
+	width: 100%;  
+	height:25px;
+	background-color: #162430;
+	color: #fff;
+	font-size: x-small;
+	
+	padding-top:5px;
+	padding-right: 25px;
+	z-index: 100;
+}
+#search-assets{
+	padding:1.2em; 
+	/*** BCM -  BootStrap4 .input-group was randomly overriding 
+	the background colors assigned to list items ***/
+	background-color: #006AB6;
+}
+.btn-xs, .btn-group-xs > .btn {
+	padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+.btn-xxs, .btn-group-xxs > .btn {
+	padding: 1px 3px;
+    font-size: 8px;
+    line-height: 1;
+    border-radius: 1px;
+}
+/*** PROGRESS BARS ***************************************************************************/
+/* BCM Revisit these once bootstrap v4 is in release. 
+/* NOTE: Both styles are needed for each color, as IE implements
+/* the progress element differently than webkit/chrome. */
+.progress-default[value]::-webkit-progress-value {
+  background-color: #006AB6; 
+}
+.progress-default[value]  {
+	/* IE uses @color */	
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	color: #006AB6; 
+}
+.progress-success[value]::-webkit-progress-value {
+  background-color: #679120;
+}
+.progress-success[value]  {
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	color: #679120; 
+}
+.progress-info[value]::-webkit-progress-value {
+  background-color: #5C9ED8;
+}
+.progress-info[value]  {
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	color: #5C9ED8; 
+}
+.progress-warning[value]::-webkit-progress-value {
+  background-color: #E8A202;
+}
+.progress-warning[value]  {
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	border: none;
+	color: #E8A202; 
+}
+.progress-danger[value]::-webkit-progress-value {
+  background-color: #C50E35;
+}
+.progress-danger[value]  {
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	color: #C50E35;
+}
+.progress::-ms-fill {
+    border: none;
+}
+/*** BUTTONS **************************************************************************************/
+/* BCM: Bootstrap v4 has an active state for buttons when "hit," and it relies on focus, so 
+/* we must separate the hover and focus states below if this state is needed. */  
+.btn-primary{
+	background-color: #006AB6;
+	border-color: #215488;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-primary:hover, .btn-primary:focus {
+	background-color: #215488;
+	border-color: #1d4b7a;	
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;	
+}
+.btn-secondary{
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-secondary:hover, .btn-secondary:focus{
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;	
+}
+.btn-success{
+	background-color: #679120;
+	border-color: #5c821c;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-success:hover, .btn-success:focus{
+	background-color: #5c821c;
+	border-color: #527519;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-info{
+	background-color: #5C9ED8;
+	border-color: #528ec2;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-info:hover, .btn-info:focus{
+	background-color: #528ec2;
+	border-color: #497fae;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-warning{
+	background-color: #E8A202;
+	border-color: #d09101;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-warning:hover, .btn-warning:focus{
+	background-color: #d09101;
+	border-color: #bb8200;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-danger{
+	background-color: #C50E35;
+	border-color: #b10c2f;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-danger:hover, .btn-danger:focus{
+	background-color: #b10c2f;
+	border-color: #9f0a2a;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-dark{
+	color: #fff;
+	background-color: #162430;
+	border-color: #000;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;	
+}
+.btn-dark:hover, .btn-dark:focus{
+	color: #fff;
+	background-color: #000;
+	border-color: #000;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;	
+}
+/*** OUTLINE BUTTONS **************************************************************************************/  
+.btn-primary-outline{
+	background-color: #fff;
+	border-color: #006AB6;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-primary-outline:hover, .btn-primary-outline:focus {
+	background-color: #006AB6;
+	border-color: #1d4b7a;	
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;	
+}
+.btn-secondary-outline{
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-secondary-outline:hover, .btn-secondary-outline:focus{
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;	
+}
+.btn-success-outline{
+	background-color: #fff;
+	border-color: #679120;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-success-outline:hover, .btn-success-outline:focus{
+	background-color: #679120;
+	border-color: #527519;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-info-outline{
+	background-color: #fff;
+	border-color: #5C9ED8;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-info-outline:hover, .btn-info-outline:focus{
+	background-color: #5C9ED8;
+	border-color: #497fae;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-warning-outline{
+	background-color: #fff;
+	border-color: #E8A202;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-warning-outline:hover, .btn-warning-outline:focus{
+	background-color: #E8A202;
+	border-color: #bb8200;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-danger-outline{
+	background-color: #fff;
+	border-color: #C50E35;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-danger-outline:hover, .btn-danger-outline:focus{
+	background-color: #C50E35;
+	border-color: #9f0a2a;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.btn-dark-outline{
+	
+	background-color: #fff;
+	border-color: #162430;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;	
+}
+.btn-dark-outline:hover, .btn-dark-outline:focus{
+	color: #fff;
+	background-color: #000;
+	border-color: #000;
+	-webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;	
+}
+/*** LABELS ***************************************************************************************/
+.label-primary{
+	background-color: #006AB6;
+	border-color: #215488;
+}
+.label-success{
+	background-color: #679120;
+	border-color: #5c821c;
+}
+.label-info{
+	background-color: #5C9ED8;
+	border-color: #528ec2;
+}
+.label-warning{
+	background-color: #E8A202;
+	border-color: #d09101;
+}
+.label-danger{
+	background-color: #C50E35;
+	border-color: #b10c2f;
+}
+.label-dark{
+	color: #fff;
+	background-color: #162430;	
+}
+/*** CARDS ****************************************************************************************/
+.card-primary{
+	background-color: #006AB6;
+	border-color: #215488;
+}
+.card-success{
+	background-color: #679120;
+	border-color: #5c821c;
+}
+.card-info{
+	background-color: #5C9ED8;
+	border-color: #528ec2;
+}
+.card-warning{
+	background-color: #E8A202;
+	border-color: #d09101;
+}
+.card-danger{
+	background-color: #C50E35;
+	border-color: #b10c2f;
+}
+.card-dark{
+	background-color: #162430;
+	border-color: #000;	
+}
+/*** BGs *******************************************************************************************/
+.bg-primary{
+	background-color: #006AB6;
+}
+.bg-success{
+	background-color: #679120;
+}
+.bg-info{
+	background-color: #5C9ED8;
+}
+.bg-warning{
+	background-color: #E8A202;
+}
+.bg-danger{
+	background-color: #C50E35;
+}
+.bg-dark{
+	background-color: #162430;
+}
+/*** TEXT *******************************************************************************************/
+.text-primary{
+	color: #006AB6;
+}
+.text-success{
+	color: #679120;
+}
+.text-info{
+	color: #5C9ED8;
+}
+.text-warning{
+	color: #E8A202;
+}
+.text-danger{
+	color: #C50E35;
+}
+.text-dark{
+	color: #162430;
+}
+/*** UTILITIES *************************************************************************************/
+.clear-all-pad {
+	padding:0;
+	margin-right:0;
+	margin-left:0;
+}
+/* Consider using FlexBox for this if IE9 support not needed */
+.row-eq-height {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display:         flex;
+}
+.pull-35
+{
+	left: 35%;
+	right: auto;	 
+	transform: translate(-35%, 0);
+}	
+.pull-57
+{
+	left: 57%;
+	right: auto;	  
+	transform: translate(-57%, 0);
+}
+.pull-79
+{
+	left: 79%;
+	right: auto;	  
+	transform: translate(-79%, 0);
+}
+/*** MISC ******************************************************************************************/
+.card-album{
+	width:301px;
+	float: left;
+	position: relative;
+	margin: 1em;
+}
+.grid-cell-example{
+	background-color: rgba(86, 61, 124, 0.14902);
+	border: 1px solid rgba(86,61,124,.2);
+}
+
