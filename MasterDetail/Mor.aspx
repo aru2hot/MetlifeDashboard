@@ -104,12 +104,12 @@
                     <div class="form-group col-md-6">
                         <div class="pull-right vertical-align">
                             <asp:LinkButton runat="server" ID="MOR_Add_Button" Text="ADD NEW" CssClass="btn btn-sm btn-success" OnClick="MOR_Add_Button_Click" />
-                            <asp:LinkButton ID="MOR_Search_Button" runat="server"  CssClass="btn btn-sm btn-danger" OnClientClick="Show_hide_MOR_filter()" OnClick="MOR_Search_Button_Click">
+                            <asp:LinkButton ID="MOR_Search_Button" runat="server"  CssClass="btn btn-sm btn-danger" OnClientClick="Show_hide_MOR_filter()" OnClick="MOR_Search_Button_Click" CausesValidation="False">
                                     <span class="fa fa-search"></span>&nbsp;SEARCH
                             </asp:LinkButton>
                             <asp:LinkButton runat="server" ID="MOR_Reset" Text="RESET" CssClass="btn btn-sm btn-dark " OnClick="MOR_Reset_Click"
                                  />
-                              <input type="button"  ID="MOR_SHOW_HIDE_FILTER" Value="SHOW FILTER" Class="btn btn-sm btn-warning " onclick="Show_hide_MOR_filter()"  />
+                              <input type="button"  ID="MOR_SHOW_HIDE_FILTER" Value="SHOW FILTER" Class="btn btn-sm btn-warning " onclick="Show_hide_MOR_filter()"   />
 
                             <asp:LinkButton runat="server" ID="MOR_Excel_Export" Text="DOWNLOAD AS EXCEL" OnClick="MOR_Excel_Export_Click"   CssClass="btn btn-sm alert-warning " >
 
@@ -159,7 +159,8 @@
                                     </div>
 
                                     <div class="form-group col-md-4">
-                                        Project Name<br />
+                                                Project Name
+                                                <asp:RequiredFieldValidator ID="rf_MOR_Add_Project_Name" runat="server" ControlToValidate="MOR_Add_Project_Name" Text="*" ForeColor="Red"></asp:RequiredFieldValidator><br />
                                         <asp:TextBox ID="MOR_Add_Project_Name" CssClass="accordian-content form-control boldtext" runat="server" TextMode="SingleLine" AutoPostBack="false" />
 
                                     </div>
@@ -175,7 +176,8 @@
 
                                 <div class="row wellCustom">
                                     <div class="form-group col-md-12 ">
-                                        Description<br />
+                                                Description
+                                                <asp:RequiredFieldValidator ID="rf_MOR_Add_Description" runat="server" ControlToValidate="MOR_Add_Description" ForeColor="Red">*</asp:RequiredFieldValidator><br />
                                         <%--<asp:TextBox Width="600px" Height="175px" Columns="100" TextMode="MultiLine" runat="server" ID="MOR_Add_Description"></asp:TextBox>--%>
                                         <textarea id="MOR_Add_Description" class="accordian-content form-control boldtext" name="MOR_Add_Description" runat="server" style="outline-width: thin; min-height: 200px; min-width: 850px; width: 900px"></textarea>
                                     </div>
@@ -240,8 +242,9 @@
 
             <div class="row wellCustom">
                 <div class="form-group col-md-12">
-                    <div class="pull-right vertical-align">
-
+                            <div>
+                                <%--class="pull-right vertical-align"--%>
+                                <asp:ValidationSummary ID="validation_summary_Mor_add_details" runat="server" DisplayMode="SingleParagraph" ForeColor="Red" HeaderText="** Please fill the Required fields" />
                         <asp:Button runat="server" ID="MOR_Add_Details" Text="SAVE" CssClass="btn btn-md  btn-success" OnClick="MOR_Add_Details_Click" />
 
 
