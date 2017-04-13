@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" EnableEventValidation ="false" AutoEventWireup="true" EnableViewState="true" CodeFile="Mor.aspx.cs" MasterPageFile="~/Site.master" Inherits="Mor" %>
+﻿<%@ Page Language="C#" EnableEventValidation ="false" ValidateRequest="false" AutoEventWireup="true" EnableViewState="true" CodeFile="Mor.aspx.cs" MasterPageFile="~/Site.master" Inherits="Mor" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="morpop" %>
 
@@ -8,8 +8,34 @@
 
      <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
+    <script src="ckeditor/ckeditor.js"></script>
 
     <script type="text/javascript" >
+        $(document).ready(function () {
+            
+            loadControl("MainContent_MOR_Add_Description");
+        });
+        
+        function pageLoad()
+        {
+            alert("sd");
+            loadControl("MainContent_MOR_Add_Description");
+            loadControl("MainContent_MOR_Add_Risks");
+        }
+        function loadControl(id) {
+            var instance = CKEDITOR.instances[id];
+            if (instance) {
+                CKEDITOR.remove(instance);
+                
+            }
+            CKEDITOR.replace(id);
+
+            //if (CKEDITOR.instances[MOR_Add_Description])
+            //    delete CKEDITOR.instances[MOR_Add_Description];
+            //CKEDITOR.replace(MOR_Add_Description);
+
+        }
+
         function Show_hide_MOR_filter()
         {
             
@@ -23,6 +49,8 @@
                 MOR_SHOW_HIDE_FILTER.value = "SHOW FILTER"
             }
         }
+
+        
     </script>
     <div class="panel-heading">
         MetLife Delivery Dashboard
@@ -179,7 +207,7 @@
                                                 Description
                                                 <asp:RequiredFieldValidator ID="rf_MOR_Add_Description" runat="server" ControlToValidate="MOR_Add_Description" ForeColor="Red">*</asp:RequiredFieldValidator><br />
                                         <%--<asp:TextBox Width="600px" Height="175px" Columns="100" TextMode="MultiLine" runat="server" ID="MOR_Add_Description"></asp:TextBox>--%>
-                                        <textarea id="MOR_Add_Description" class="accordian-content form-control boldtext" name="MOR_Add_Description" runat="server" style="outline-width: thin; min-height: 200px; min-width: 850px; width: 900px"></textarea>
+                                        <textarea id="MOR_Add_Description" class="ckeditor"  name="MOR_Add_Description" runat="server" style="outline-width: thin; min-height: 200px; min-width: 850px; width: 900px"></textarea>
                                     </div>
 
 
@@ -248,7 +276,7 @@
                         <asp:Button runat="server" ID="MOR_Add_Details" Text="SAVE" CssClass="btn btn-md  btn-success" OnClick="MOR_Add_Details_Click" />
 
 
-                        <asp:Button ID="MOR_Add_Close_Button" runat="server" CssClass="btn btn-md btn-danger" Text="CLOSE" OnClick="MOR_Add_Close_Button_Click"></asp:Button>
+                        <asp:Button ID="MOR_Add_Close_Button" runat="server" CssClass="btn btn-md btn-danger" Text="CLOSE" OnClick="MOR_Add_Close_Button_Click" CausesValidation="false"></asp:Button>
                         <asp:Label runat="server" ID="lbl_MOR_Add_Status" ForeColor="#3366ff"></asp:Label>
                     </div>
                 </div>
