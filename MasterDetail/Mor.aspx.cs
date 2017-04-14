@@ -328,13 +328,11 @@ public partial class Mor : System.Web.UI.Page
         MOR_Add_Category.SelectedValue = dt.Rows[0]["Category"].ToString();
         MOR_Add_Project_Name.Text = dt.Rows[0]["Project_name"].ToString();
 
-        MOR_Add_Description.InnerHtml = RemoveHTMLTags(dt.Rows[0]["description"].ToString().TrimStart());
+        MOR_Add_Description.InnerHtml = dt.Rows[0]["description"].ToString().TrimStart();
 
         MOR_Add_LastWeekStatus.SelectedValue = dt.Rows[0]["LAST_WEEK_COLOR"].ToString();
         MOR_Add_CurrentWeekStatus.SelectedValue = dt.Rows[0]["CURRENT_WEEK_COLOR"].ToString();
-        //MOR_PopUp.FindControl("MOR_Add_Risks") = RemoveHTMLTags(dt.Rows[0]["Risks"].ToString().TrimStart());
-        //  TextBox text_Risks = (TextBox)Page.FindControl("MOR_Add_Risks");
-        //  ((TextBox) MOR_PopUp.FindControl("MOR_Add_Risks")).Text = RemoveHTMLTags(dt.Rows[0]["Risks"].ToString().TrimStart());
+   
         MOR_Add_Risks.InnerHtml = dt.Rows[0]["Risks"].ToString().TrimStart();
 
         //   ((System.Web.UI.HtmlControls.HtmlContainerControl)(MOR_PopUp.FindControl("MOR_Add_Risks"))).InnerHtml = dt.Rows[0]["Risks"].ToString().TrimStart();
