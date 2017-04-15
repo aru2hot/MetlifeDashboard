@@ -15,12 +15,6 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
 
-    <script type="text/javascript">
-        function test_click() {
-            alert("sdsd");
-        }
-
-    </script>
 
     <script type="text/javascript">
         $("[src*=plus]").live("click", function () {
@@ -85,7 +79,7 @@
         });
 
 
-      
+
 
 
 
@@ -101,18 +95,13 @@
         <ContentTemplate>
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    MetLife Delivery Dashboard
+                    METRICS INFORMATION
                 </div>
 
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div id="main_Tabs" role="tabpanel">
                             <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li class="active"><a href="#tab_main_1" aria-controls="tab_main_1" role="tab" data-toggle="tab">METRICS</a></li>
-                               
-
-                            </ul>
 
                             <div class="tab-content" style="padding-top: 20px">
                                 <div role="tabpanel" class="tab-pane active" id="tab_main_1">
@@ -208,9 +197,6 @@
                                                         <!-- Nav tabs -->
                                                         <ul class="nav nav-tabs" role="tablist">
                                                             <li class="active"><a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">METRICS</a></li>
-                                                            <li><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">PRIOR RELEASE</a></li>
-                                                            <li><a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">CURRENT RELEASE</a></li>
-                                                            <li><a href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab">FUTURE RELEASE</a></li>
 
                                                         </ul>
 
@@ -397,8 +383,6 @@
                                                                 </asp:GridView>
                                                             </div>
 
-                                                          
-
                                                         </div>
                                                     </div>
                                                     <asp:HiddenField ID="TabName" runat="server" />
@@ -436,7 +420,7 @@
                                     </asp:UpdatePanel>
                                 </div>
 
-       
+
 
                             </div>
                         </div>

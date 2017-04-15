@@ -12,13 +12,35 @@ public partial class Releases : System.Web.UI.Page
     DAL dal = new DAL();
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
 
-       
+            DataTable dt = Get_UDS_REL_INFO_DATA();    
+
+            DataView dv11 = new DataView(dt);
+            dv11.Sort = "RELEASESTARTDATE ASC";
+            dt = dv11.ToTable();
+            dt = Add_RAG_Column(dt);
+            Session["All_DT"] = dt;
+            DataView dv = new DataView(dt);
+
+            dv.RowFilter = "BU = '" + ddl_BU.SelectedItem.ToString() + "'";
+            dt = dv.ToTable();
+            Session["Report_DT"] = dt;
+            loading_filtercolumn_values(dt);
+        }
+
     }
-
+  
 
     protected void Search_Button_Click(object sender, EventArgs e)
     {
+
+        DataTable dt = (DataTable)Session["Report_DT"];
+
+        dt = filter_records(dt);
+
+        Session["Filtered_DataTable"] = dt;
         #region prior_tab
 
 
@@ -53,7 +75,7 @@ public partial class Releases : System.Web.UI.Page
 
         DAL dal = new DAL();
         DataTable dt = new DataTable("UDS_DATA");
-        dt = dal.SelectDetails("select U.* , R.* from [UDS] as  U left  join  [T_RELEASE_INFO] as R ON U.UDSPROJECTKEY = R.UDS_Key");
+        dt = dal.SelectDetails("select U.* , R.*, datename(mm,releasestartdate)  + ' ' + CAST(YEAR(releasestartdate) as varchar) as ReleaseMonth from [UDS] as  U left  join  [T_RELEASE_INFO] as R ON U.UDSPROJECTKEY = R.UDS_Key");
         dal = null;
         return dt;
     }
@@ -643,7 +665,7 @@ public partial class Releases : System.Web.UI.Page
             dal.insertintoDB(insert_Rel_info);
         }
 
-        string update_stmt_rel_info = " Update T_Release_info set " + "QA_Start_dt = " + (PopUp_F_QAStartDate.Text.ToString().Replace(",", "") != "" ? "'" + Convert.ToDateTime(PopUp_F_QAStartDate.Text.Replace(",", "")).ToString("yyyy-MM-dd") + "'" : "NULL") + "" + ",QA_End_dt = " + (PopUp_F_QAEndDate.Text.ToString().Replace(",", "") != "" ? "'" + Convert.ToDateTime(PopUp_F_QAEndDate.Text.Replace(",", "")).ToString("yyyy-MM-dd") + "'" : "NULL") + "" + ",UAT_Start_dt = " + (PopUp_F_UATStartDate.Text.ToString().Replace(",", "") != "" ? "'" + Convert.ToDateTime(PopUp_F_UATStartDate.Text.Replace(",", "")).ToString("yyyy-MM-dd") + "'" : "NULL") + "" + ",UAT_End_dt = " + (PopUp_F_UATEndDate.Text.ToString().Replace(",", "") != "" ? "'" + Convert.ToDateTime(PopUp_F_UATEndDate.Text.Replace(",", "")).ToString("yyyy-MM-dd") + "'" : "NULL") + "" + ",QA_Progress_PERCENT = " + (PopUp_F_QAProgress.Text.Replace(",", "") == "" ? "0" : PopUp_F_QAProgress.Text.Replace(",", "")) + ",UAT_Progress_PERCENT = " + (PopUp_F_UATProgress.Text.Replace(",", "") == "" ? "0" : PopUp_F_UATProgress.Text.Replace(",", "")) + ",Comments = '" + PopUp_F_ManagerComments.Text.ToString().Replace(",,", "") + "' where UDS_Key = '" + Session["REL_INFO_EDIT_KEY"].ToString() + "'";
+        string update_stmt_rel_info = " Update T_Release_info set " + "QA_Start_dt = " + (PopUp_F_QAStartDate.Text.ToString().Replace(",", "") != "" ? "'" + Convert.ToDateTime(PopUp_F_QAStartDate.Text.Replace(",", "")).ToString("yyyy-MM-dd") + "'" : "NULL") + "" + ",QA_End_dt = " + (PopUp_F_QAEndDate.Text.ToString().Replace(",", "") != "" ? "'" + Convert.ToDateTime(PopUp_F_QAEndDate.Text.Replace(",", "")).ToString("yyyy-MM-dd") + "'" : "NULL") + "" + ",UAT_Start_dt = " + (PopUp_F_UATStartDate.Text.ToString().Replace(",", "") != "" ? "'" + Convert.ToDateTime(PopUp_F_UATStartDate.Text.Replace(",", "")).ToString("yyyy-MM-dd") + "'" : "NULL") + "" + ",UAT_End_dt = " + (PopUp_F_UATEndDate.Text.ToString().Replace(",", "") != "" ? "'" + Convert.ToDateTime(PopUp_F_UATEndDate.Text.Replace(",", "")).ToString("yyyy-MM-dd") + "'" : "NULL") + "" + ",QA_Progress_PERCENT = " + (PopUp_F_QAProgress.Text.Replace(",", "") == "" ? "0" : PopUp_F_QAProgress.Text.Replace(",", "")) + ",UAT_Progress_PERCENT = " + (PopUp_F_UATProgress.Text.Replace(",", "") == "" ? "0" : PopUp_F_UATProgress.Text.Replace(",", "")) + ",Comments = '" + PopUp_F_ManagerComments.Text.ToString().Replace(",", "") + "' where UDS_Key = '" + Session["REL_INFO_EDIT_KEY"].ToString() + "'";
 
         dal.UpdateDB(update_stmt_rel_info);
         reset_FutureRelease_PopUp();
@@ -651,6 +673,7 @@ public partial class Releases : System.Web.UI.Page
         future_release_grid.DataSource = Get_Future_Data();
 
         future_release_grid.DataBind();
+        ModalPopupExtender_FUTURE.Hide();
 
     }
 
@@ -752,27 +775,27 @@ public partial class Releases : System.Web.UI.Page
         }
 
 
-        if (RAG_status.SelectedItem.ToString() != null)
-        {
+        //if (RAG_status.SelectedItem.ToString() != null)
+        //{
 
 
-            if (RAG_status.SelectedItem.ToString() != "All")
-            {
+        //    if (RAG_status.SelectedItem.ToString() != "All")
+        //    {
 
-                if (query != null)
-                {
-                    query += " AND ";
-                }
-                else
-                {
-                    query += " ";
-                }
+        //        if (query != null)
+        //        {
+        //            query += " AND ";
+        //        }
+        //        else
+        //        {
+        //            query += " ";
+        //        }
 
-                query += "RAG = '" + RAG_status.SelectedItem.ToString() + "'";
-            }
+        //        query += "RAG = '" + RAG_status.SelectedItem.ToString() + "'";
+        //    }
 
 
-        }
+        //}
 
         if (ddl_Releases.SelectedItem.ToString() != null)
         {
@@ -1184,115 +1207,7 @@ public partial class Releases : System.Web.UI.Page
         return d_dt;
     }
 
-    //protected void ddl_Application_SelectedIndexChanged(object sender, EventArgs e)
-    //{
-    //    DataTable dt = (DataTable)Session["Report_DT"];
-
-    //    DataView dv = new DataView(dt);
-
-    //    if (ddl_ReleaseMonth.SelectedValue.ToString() != "All")
-    //    {
-
-    //        dv.RowFilter = "`ReleaseMonth` = '" + ddl_ReleaseMonth.SelectedValue.ToString() + "'";
-    //    }
-
-    //    dv = new DataView(dv.ToTable());
-
-    //    if (ddl_PBM.SelectedValue.ToString() != "All")
-    //    {
-    //        dv.RowFilter = "PBM= '" + ddl_PBM.SelectedValue.ToString() + "'";
-    //    }
-
-
-    //    dv = new DataView(dv.ToTable());
-
-    //    if (ddl_PBM1.SelectedValue.ToString() != "All")
-    //    {
-    //        dv.RowFilter = "PBM1 = '" + ddl_PBM1.SelectedValue.ToString() + "'";
-    //    }
-
-    //    dv = new DataView(dv.ToTable());
-
-    //    if (ddl_PBM2.SelectedValue.ToString() != "All")
-    //    {
-    //        dv.RowFilter = "PBM2 = '" + ddl_PBM2.SelectedValue.ToString() + "'";
-    //    }
-
-    //    dv = new DataView(dv.ToTable());
-
-    //    if (ddl_Portfolio.SelectedValue.ToString() != "All")
-    //    {
-    //        dv.RowFilter = "PORTFOLIO= '" + ddl_Portfolio.SelectedValue.ToString() + "'";
-    //    }
-
-    //    dv = new DataView(dv.ToTable());
-
-    //    if (ddl_Application.SelectedValue.ToString() != "All")
-    //    {
-
-    //        dv.RowFilter = "`Application` = '" + ddl_Application.SelectedValue.ToString() + "'";
-    //    }
-
-    //    dv = new DataView(dv.ToTable());
-
-    //    dt = dv.ToTable();
-
-    //    loading_releases_dropdown(dt);
-
-    //}
-    //protected void ddl_Portfolio_SelectedIndexChanged(object sender, EventArgs e)
-    //{
-    //    DataTable dt = (DataTable)Session["Report_DT"];
-
-    //    DataView dv = new DataView(dt);
-
-    //    if (ddl_ReleaseMonth.SelectedValue.ToString() != "All")
-    //    {
-
-    //        dv.RowFilter = "`ReleaseMonth` = '" + ddl_ReleaseMonth.SelectedValue.ToString() + "'";
-    //    }
-
-    //    dv = new DataView(dv.ToTable());
-
-    //    if (ddl_PBM.SelectedValue.ToString() != "All")
-    //    {
-    //        dv.RowFilter = "PBM= '" + ddl_PBM.SelectedValue.ToString() + "'";
-    //    }
-
-
-    //    dv = new DataView(dv.ToTable());
-
-    //    if (ddl_PBM1.SelectedValue.ToString() != "All")
-    //    {
-    //        dv.RowFilter = "PBM1 = '" + ddl_PBM1.SelectedValue.ToString() + "'";
-    //    }
-
-    //    dv = new DataView(dv.ToTable());
-
-    //    if (ddl_PBM2.SelectedValue.ToString() != "All")
-    //    {
-    //        dv.RowFilter = "PBM2 = '" + ddl_PBM2.SelectedValue.ToString() + "'";
-    //    }
-
-
-    //    dv = new DataView(dv.ToTable());
-
-    //    if (ddl_Portfolio.SelectedValue.ToString() != "All")
-    //    {
-    //        dv.RowFilter = "PORTFOLIO= '" + ddl_Portfolio.SelectedValue.ToString() + "'";
-    //    }
-
-    //    dv = new DataView(dv.ToTable());
-
-    //    dt = dv.ToTable();
-
-    //    loading_application_dropdown(dt);
-
-    //    loading_releases_dropdown(dt);
-
-
-
-    //}
+   
     protected void ddl_PBM2_SelectedIndexChanged(object sender, EventArgs e)
     {
         DataTable dt = (DataTable)Session["Report_DT"];
@@ -1396,4 +1311,7 @@ public partial class Releases : System.Web.UI.Page
 
         }
     }
+
+  
+  
 }
