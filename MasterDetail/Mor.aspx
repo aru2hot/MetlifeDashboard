@@ -11,14 +11,14 @@
     <script src="ckeditor/ckeditor.js"></script>
 
     <script type="text/javascript" >
-        $(document).ready(function () {
+        //$(document).ready(function () {
             
-            loadControl("MainContent_MOR_Add_Description");
-        });
+        //    loadControl("MainContent_MOR_Add_Description");
+        //});
         
         function pageLoad()
         {
-            alert("sd");
+          
             loadControl("MainContent_MOR_Add_Description");
             loadControl("MainContent_MOR_Add_Risks");
         }
@@ -207,7 +207,7 @@
                                                 Description
                                                 <asp:RequiredFieldValidator ID="rf_MOR_Add_Description" runat="server" ControlToValidate="MOR_Add_Description" ForeColor="Red">*</asp:RequiredFieldValidator><br />
                                         <%--<asp:TextBox Width="600px" Height="175px" Columns="100" TextMode="MultiLine" runat="server" ID="MOR_Add_Description"></asp:TextBox>--%>
-                                        <textarea id="MOR_Add_Description" class="ckeditor"  name="MOR_Add_Description" runat="server" style="outline-width: thin; min-height: 200px; min-width: 850px; width: 900px"></textarea>
+                                        <textarea id="MOR_Add_Description"   name="MOR_Add_Description" runat="server" style="outline-width: thin; min-height: 200px; min-width: 850px; width: 900px"></textarea>
                                     </div>
 
 

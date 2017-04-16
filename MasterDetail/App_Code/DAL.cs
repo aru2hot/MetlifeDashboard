@@ -14,8 +14,8 @@ namespace MasterDetail
 {
     public class DAL
     {
-      public static string connetionstring = "Data Source=CTSINTBMVNVDB2;Initial Catalog=MetLifeDD;User ID=metlifedd;Password=metlifedd";
-     // public static string connetionstring = "Data Source=DESKTOP-KS262BJ\\SQLEXPRESS;Initial Catalog=METDASH;Integrated Security=True";
+     // public static string connetionstring = "Data Source=CTSINTBMVNVDB2;Initial Catalog=MetLifeDD;User ID=metlifedd;Password=metlifedd";
+      public static string connetionstring = "Data Source=DESKTOP-KS262BJ\\SQLEXPRESS;Initial Catalog=METDASH;Integrated Security=True";
         SqlConnection con = new SqlConnection(connetionstring);
 
 
