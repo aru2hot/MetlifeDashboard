@@ -24,84 +24,95 @@
             <div class="panel-heading">
                 RELEASE INFORMATION
             </div>
-
-            <div class="panel-body">
-                <asp:UpdatePanel ID="Release_filters" runat="server" UpdateMode="Conditional">
-                    <ContentTemplate>
-                        <div class="row wellCustom">
-                            <div class="form-group col-md-2">
-                                BU<br />
-                                <asp:DropDownList ID="ddl_BU" CssClass="form-control boldtext" runat="server" OnSelectedIndexChanged="ddl_BU_SelectedIndexChanged" AutoPostBack="true">
-                                    <asp:ListItem Value="EAD">EAD</asp:ListItem>
-                                    <asp:ListItem Value="RAD">RAD</asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                            <div class="form-group col-md-2">
-                                Release Month<br />
-                                <asp:DropDownList ID="ddl_ReleaseMonth" CssClass="ui-datepicker-month form-control boldtext" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddl_ReleaseMonth_SelectedIndexChanged">
-                                </asp:DropDownList>
-                            </div>
-                            <div class="form-group col-md-2">
-                                PBM<br />
-                                <asp:DropDownList ID="ddl_PBM" CssClass="form-control boldtext" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddl_PBM_SelectedIndexChanged">
-                                </asp:DropDownList>
-                            </div>
-                            <div class="form-group col-md-3">
-                                PBM-1<br />
-                                <asp:DropDownList ID="ddl_PBM1" CssClass="form-control boldtext" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddl_PBM1_SelectedIndexChanged">
-                                </asp:DropDownList>
-                            </div>
-                            <div class="form-group col-md-3">
-                                PBM-2<br />
-                                <asp:DropDownList ID="ddl_PBM2" CssClass="form-control boldtext" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddl_PBM2_SelectedIndexChanged">
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                        <div class="row wellCustom">
-                            <div class="form-group col-md-3">
-                                Portfolio<br />
-                                <asp:DropDownList ID="ddl_Portfolio" CssClass="accordian-content form-control boldtext" runat="server" OnSelectedIndexChanged="ddl_Portfolio_SelectedIndexChanged" AutoPostBack="true">
-                                </asp:DropDownList>
-                            </div>
-                            <div class="form-group col-md-3">
-                                Application<br />
-                                <asp:DropDownList ID="ddl_Application" CssClass="form-control boldtext" runat="server" OnSelectedIndexChanged="ddl_Application_SelectedIndexChanged" AutoPostBack="true">
-                                </asp:DropDownList>
-                            </div>
-                            <div class="form-group col-md-3">
-                                Release Name<br />
-                                <asp:DropDownList ID="ddl_Releases" CssClass="form-control boldtext" runat="server" AutoPostBack="true">
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-
-                    </ContentTemplate>
-                    <Triggers>
-                        <asp:AsyncPostBackTrigger ControlID="ddl_ReleaseMonth" EventName="SelectedIndexChanged" />
-                        <asp:AsyncPostBackTrigger ControlID="ddl_PBM" EventName="SelectedIndexChanged" />
-                        <asp:AsyncPostBackTrigger ControlID="ddl_Portfolio" EventName="SelectedIndexChanged" />
-                        <asp:AsyncPostBackTrigger ControlID="ddl_Application" EventName="SelectedIndexChanged" />
-                        <asp:AsyncPostBackTrigger ControlID="ddl_Releases" EventName="SelectedIndexChanged" />
-                        <asp:AsyncPostBackTrigger ControlID="Reset_Button" EventName="Click" />
-                    </Triggers>
-
-                </asp:UpdatePanel>
-                <div class="row wellCustom">
+            <div class="panel panel-default">
+                <div class="panel-body">
 
 
-                    <div class="form-group col-md-2">
-                        <div class="pull-right vertical-align">
-                            <asp:LinkButton ID="Search_Button" runat="server" CssClass="btn btn-sm btn-success" OnClick="Search_Button_Click">
-                                    <span class="fa fa-search"></span>&nbsp;Search
-                            </asp:LinkButton>
-                            <asp:LinkButton ID="Reset_Button" runat="server" CssClass="btn btn-sm btn-success" OnClick="Reset_Button_Click">
+                    <div class="panel-body">
+
+                        <asp:UpdatePanel ID="Release_filters" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <div class="row wellCustom">
+                                    <div class="form-group col-sm-2">
+                                        BU<br />
+                                        <asp:DropDownList ID="ddl_BU" CssClass="form-control boldtext" runat="server" OnSelectedIndexChanged="ddl_BU_SelectedIndexChanged" AutoPostBack="true">
+                                            <asp:ListItem Value="EAD">EAD</asp:ListItem>
+                                            <asp:ListItem Value="RAD">RAD</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                    <div class="form-group col-sm-2">
+                                        Release Month<br />
+                                        <asp:DropDownList ID="ddl_ReleaseMonth" CssClass="ui-datepicker-month form-control boldtext" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddl_ReleaseMonth_SelectedIndexChanged">
+                                        </asp:DropDownList>
+                                    </div>
+                                    <div class="form-group col-sm-2">
+                                        PBM<br />
+                                        <asp:DropDownList ID="ddl_PBM" CssClass="form-control boldtext" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddl_PBM_SelectedIndexChanged">
+                                        </asp:DropDownList>
+                                    </div>
+                                    <div class="form-group col-sm-2">
+                                        PBM-1<br />
+                                        <asp:DropDownList ID="ddl_PBM1" CssClass="form-control boldtext" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddl_PBM1_SelectedIndexChanged">
+                                        </asp:DropDownList>
+                                    </div>
+
+                                </div>
+                                <div class="row wellCustom">
+                                    <div class="form-group col-sm-2">
+                                        Portfolio<br />
+                                        <asp:DropDownList ID="ddl_Portfolio" CssClass="accordian-content form-control boldtext" runat="server" OnSelectedIndexChanged="ddl_Portfolio_SelectedIndexChanged" AutoPostBack="true">
+                                        </asp:DropDownList>
+                                    </div>
+                                    <div class="form-group col-sm-2">
+                                        Application<br />
+                                        <asp:DropDownList ID="ddl_Application" CssClass="form-control boldtext" runat="server" OnSelectedIndexChanged="ddl_Application_SelectedIndexChanged" AutoPostBack="true">
+                                        </asp:DropDownList>
+                                    </div>
+                                    <div class="form-group col-sm-2">
+                                        Release Name<br />
+                                        <asp:DropDownList ID="ddl_Releases" CssClass="form-control boldtext" runat="server" AutoPostBack="true">
+                                        </asp:DropDownList>
+                                    </div>
+                                    <div class="form-group col-sm-2">
+                                        PBM-2<br />
+                                        <asp:DropDownList ID="ddl_PBM2" CssClass="form-control boldtext" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddl_PBM2_SelectedIndexChanged">
+                                        </asp:DropDownList>
+                                    </div>
+                                    <div class="form-group col-sm-2">
+                                        <br />
+                                        <asp:LinkButton ID="Reset_Button" runat="server" CssClass="btn btn-bg btn-warning" OnClick="Reset_Button_Click">
                                     <span class="fa fa-refresh"></span>&nbsp;Reset
-                            </asp:LinkButton>
+                                        </asp:LinkButton>
+                                    </div>
+                                </div>
+
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="ddl_ReleaseMonth" EventName="SelectedIndexChanged" />
+                                <asp:AsyncPostBackTrigger ControlID="ddl_PBM" EventName="SelectedIndexChanged" />
+                                <asp:AsyncPostBackTrigger ControlID="ddl_Portfolio" EventName="SelectedIndexChanged" />
+                                <asp:AsyncPostBackTrigger ControlID="ddl_Application" EventName="SelectedIndexChanged" />
+                                <asp:AsyncPostBackTrigger ControlID="ddl_Releases" EventName="SelectedIndexChanged" />
+                                <asp:AsyncPostBackTrigger ControlID="Reset_Button" EventName="Click" />
+                            </Triggers>
+
+                        </asp:UpdatePanel>
+                        <div class="row wellCustom">
+
+
+                            <div class="form-group col-sm-6">
+                                <div class="pull-right vertical-align">
+                                    <asp:LinkButton ID="Search_Button" runat="server" CssClass="btn btn-bg btn-success" OnClick="Search_Button_Click">
+                                    <span class="fa fa-search"></span>&nbsp;Search
+                                    </asp:LinkButton>
+
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
-
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#home">PRIOR RELEASE</a></li>
                 <li><a data-toggle="tab" href="#menu1">CURRENT RELEASE</a></li>
@@ -139,6 +150,20 @@
                                         <ItemTemplate>
                                             <div>
                                                 <%# Eval("APPLICATION") %>
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="PROJECT NAME">
+                                        <ItemTemplate>
+                                            <div>
+                                                <%# Eval("PROJECTNAME") %>
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="TECHNOLOGY">
+                                        <ItemTemplate>
+                                            <div>
+                                                <%# Eval("TECHNOLOGY") %>
                                             </div>
                                         </ItemTemplate>
                                     </asp:TemplateField>
@@ -253,7 +278,7 @@
                 </div>
                 <div id="menu1" class="tab-pane fade">
                     <div class="tab-content" style="overflow-x: scroll; overflow-y: scroll; max-height: 400px; max-width: 1500px;">
-                        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server" ChildrenAsTriggers="true">
                             <ContentTemplate>
                                 <div class="panel-body">
                                     <asp:GridView ID="current_release_grid" runat="server" AutoGenerateColumns="false"
@@ -289,6 +314,23 @@
                                                     </div>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
+
+
+                                            <asp:TemplateField HeaderText="PROJECT NAME">
+                                                <ItemTemplate>
+                                                    <div>
+                                                        <%# Eval("PROJECTNAME") %>
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="TECHNOLOGY">
+                                                <ItemTemplate>
+                                                    <div>
+                                                        <%# Eval("TECHNOLOGY") %>
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
                                             <asp:TemplateField HeaderText="PBM1">
                                                 <ItemTemplate>
                                                     <div>
@@ -483,13 +525,18 @@
                                         <SortedDescendingHeaderStyle BackColor="#15524A"></SortedDescendingHeaderStyle>
                                     </asp:GridView>
                                 </div>
+                            </ContentTemplate>
+                            <Triggers>
+                            </Triggers>
+                        </asp:UpdatePanel>
 
-                                <asp:HiddenField ID="popid" runat="server" />
-                                <cc1:ModalPopupExtender ID="ModalPopupExtender2" runat="server" PopupControlID="Current_Future_PopUp_Window"
-                                    TargetControlID="popid">
-                                </cc1:ModalPopupExtender>
-                                <asp:Panel ID="Current_Future_PopUp_Window" runat="server" CssClass="modalPopupStyle" Style="height: auto; max-height: 600px; width: 1000px; border: 2px solid white; padding: 5px; background-color: #FFFFFF; display: none;">
-
+                        <asp:HiddenField ID="popid" runat="server" />
+                        <cc1:ModalPopupExtender ID="ModalPopupExtender2" runat="server" PopupControlID="Current_Future_PopUp_Window"
+                            TargetControlID="popid">
+                        </cc1:ModalPopupExtender>
+                        <asp:Panel ID="Current_Future_PopUp_Window" runat="server" CssClass="modalPopupStyle" Style="height: auto; max-height: 600px; width: 1000px; border: 2px solid white; padding: 5px; background-color: #FFFFFF; display: none;">
+                            <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                <ContentTemplate>
                                     <div class="panel panel-primary">
 
                                         <div class="panel-heading">
@@ -619,14 +666,14 @@
                                         </div>
 
                                     </div>
+                                </ContentTemplate>
+                                <Triggers>
+                                    <asp:AsyncPostBackTrigger ControlID="CF_Update" />
+                                </Triggers>
+                            </asp:UpdatePanel>
 
+                        </asp:Panel>
 
-                                </asp:Panel>
-                            </ContentTemplate>
-                            <Triggers>
-                                <asp:AsyncPostBackTrigger ControlID="CF_Update" />
-                            </Triggers>
-                        </asp:UpdatePanel>
 
 
                     </div>
@@ -666,6 +713,21 @@
                                                     <div>
                                                         <asp:Label ID="GV_F_Application" runat="server" Text='   <%# Eval("APPLICATION") %>'></asp:Label>
 
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+                                            <asp:TemplateField HeaderText="PROJECT NAME">
+                                                <ItemTemplate>
+                                                    <div>
+                                                        <%# Eval("PROJECTNAME") %>
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="TECHNOLOGY">
+                                                <ItemTemplate>
+                                                    <div>
+                                                        <%# Eval("TECHNOLOGY") %>
                                                     </div>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
@@ -1009,7 +1071,7 @@
                                     </div>
                                 </ContentTemplate>
                                 <Triggers>
-                                    <asp:AsyncPostBackTrigger ControlID="F_Update" />
+                                    <%--<asp:AsyncPostBackTrigger ControlID="F_Update" />--%>
                                 </Triggers>
                             </asp:UpdatePanel>
 
@@ -1023,8 +1085,8 @@
 
 
                 </div>
+            </div>
         </div>
-    </div>
 
 
     </div>

@@ -391,7 +391,7 @@ public partial class Releases : System.Web.UI.Page
 
             string txt = Get_Description((int)DataBinder.Eval(e.Row.DataItem, "CURRENTPHASE"));
 
-            e.Row.Cells[5].Text = txt;
+            e.Row.Cells[8].Text = txt;
         }
     }
     protected void prior_release_grid_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -401,7 +401,7 @@ public partial class Releases : System.Web.UI.Page
 
             string txt = Get_Description((int)DataBinder.Eval(e.Row.DataItem, "CURRENTPHASE"));
 
-            e.Row.Cells[4].Text = txt;
+            e.Row.Cells[7].Text = txt;
         }
 
     }
@@ -569,6 +569,9 @@ public partial class Releases : System.Web.UI.Page
         current_release_grid.DataSource = Get_Current_Data();
 
         current_release_grid.DataBind();
+        Session["REL_INFO_EDIT_KEY"] = "";
+        ModalPopupExtender2.Hide();
+
     }
     public static DataTable Add_RAG_Column(DataTable dt)
     {
@@ -646,7 +649,7 @@ public partial class Releases : System.Web.UI.Page
 
             string txt = Get_Description((int)DataBinder.Eval(e.Row.DataItem, "CURRENTPHASE"));
 
-            e.Row.Cells[5].Text = txt;
+            e.Row.Cells[8].Text = txt;
         }
     }
 
@@ -673,6 +676,7 @@ public partial class Releases : System.Web.UI.Page
         future_release_grid.DataSource = Get_Future_Data();
 
         future_release_grid.DataBind();
+        Session["REL_INFO_EDIT_KEY"] = "";
         ModalPopupExtender_FUTURE.Hide();
 
     }
@@ -1053,9 +1057,16 @@ public partial class Releases : System.Web.UI.Page
     }
     
     protected void Reset_Button_Click(object sender, EventArgs e)
-    {             
+    {
 
-      
+        DataTable dt = (DataTable)Session["Report_DT"];
+
+        loading_filtercolumn_values(dt);
+
+       
+
+       
+
     }
    
     public void loading_filtercolumn_values(DataTable dt)
