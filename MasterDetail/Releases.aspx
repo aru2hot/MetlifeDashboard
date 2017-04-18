@@ -193,7 +193,7 @@
                                     <asp:TemplateField HeaderText="Production Defects">
                                         <ItemTemplate>
                                             <div>
-                                                <%# Eval("PSDEFECTS") %>
+                                                <%# Eval("PRODDEFECTS") %>
                                             </div>
                                         </ItemTemplate>
                                     </asp:TemplateField>
@@ -367,7 +367,7 @@
                                             <asp:TemplateField HeaderText="Production Defects">
                                                 <ItemTemplate>
                                                     <div>
-                                                        <%# Eval("PSDEFECTS") %>
+                                                        <%# Eval("PRODDEFECTS") %>
                                                     </div>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
@@ -767,7 +767,7 @@
                                             <asp:TemplateField HeaderText="Production Defects">
                                                 <ItemTemplate>
                                                     <div>
-                                                        <%# Eval("PSDEFECTS") %>
+                                                        <%# Eval("PRODDEFECTS") %>
                                                     </div>
                                                 </ItemTemplate>
                                             </asp:TemplateField>

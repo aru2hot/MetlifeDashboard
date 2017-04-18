@@ -443,7 +443,7 @@ public partial class Releases : System.Web.UI.Page
         string PBM2 = UDS_Data.Rows[0]["PBM2"].ToString();
         int seq_no = int.Parse(UDS_Data.Rows[0]["CURRENTPHASE"].ToString());
         string Current_Phase = Get_Description(seq_no);
-        string PSDefects = UDS_Data.Rows[0]["PSDEFECTS"].ToString();
+        string PSDefects = UDS_Data.Rows[0]["PRODDEFECTS"].ToString();
 
 
         DataTable dt = (DataTable)Session["Filtered_DataTable"];
@@ -499,7 +499,7 @@ public partial class Releases : System.Web.UI.Page
         string PBM2 = UDS_Data.Rows[0]["PBM2"].ToString();
         int seq_no = int.Parse(UDS_Data.Rows[0]["CURRENTPHASE"].ToString());
         string Current_Phase = Get_Description(seq_no);
-        string PSDefects = UDS_Data.Rows[0]["PSDEFECTS"].ToString();
+        string PSDefects = UDS_Data.Rows[0]["PRODDEFECTS"].ToString();
 
 
         DataTable dt = (DataTable)Session["Filtered_DataTable"];
