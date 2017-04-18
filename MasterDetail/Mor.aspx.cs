@@ -563,4 +563,29 @@ public partial class Mor : System.Web.UI.Page
           
         }
     }
+
+    protected void mor_grid_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        string autoid = mor_grid.DataKeys[e.RowIndex].Value.ToString();
+
+        string smt = "delete from T_MOR_DETAILS where MOR_ID = " + autoid;
+
+        dal.UpdateDB(smt);
+
+        DataTable dt = Get_MOR_DATA();
+        //if (Session["should_proj_name_refresh"] != null)
+        //{
+        //    if (Session["should_proj_name_refresh"].ToString() == "Yes")
+        //    {
+        //        fill_mor_projectname(dt);
+        //        Session["should_proj_name_refresh"] = "No";
+        //    }
+        //}
+
+
+        dt = MOR_filter_records(dt);
+        mor_grid.DataSource = dt;
+        mor_grid.DataBind();
+
+    }
 }
