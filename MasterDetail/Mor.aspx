@@ -205,7 +205,7 @@
                                 <div class="row wellCustom">
                                     <div class="form-group col-md-12 ">
                                                 Description
-                                                <asp:RequiredFieldValidator ID="rf_MOR_Add_Description" runat="server" ControlToValidate="MOR_Add_Description" ForeColor="Red">*</asp:RequiredFieldValidator><br />
+                                               <%-- <asp:RequiredFieldValidator ID="rf_MOR_Add_Description" runat="server" ControlToValidate="MOR_Add_Description" ForeColor="Red">*</asp:RequiredFieldValidator><br />--%>
                                         <%--<asp:TextBox Width="600px" Height="175px" Columns="100" TextMode="MultiLine" runat="server" ID="MOR_Add_Description"></asp:TextBox>--%>
                                         <textarea id="MOR_Add_Description"   name="MOR_Add_Description" runat="server" style="outline-width: thin; min-height: 200px; min-width: 850px; width: 900px"></textarea>
                                     </div>

@@ -363,8 +363,10 @@ public partial class Mor : System.Web.UI.Page
 
     public void fill_mor_portofolio(DataTable dt)
     {
+        string smt = "SELECT  distinct value as PORTFOLIO FROM [MetLifeDD].[dbo].[T_GENERAL_METDD_DATA] where [Key] = 'Portfolio'";
 
-        mor_portofolio.DataSource = Distinct_Column_Values(dt, "PORTFOLIO", true);
+        //mor_portofolio.DataSource = Distinct_Column_Values(dt, "PORTFOLIO", true);
+        mor_portofolio.DataSource = dal.SelectDetails(smt);
 
         mor_portofolio.DataTextField = "PORTFOLIO";
 
@@ -378,8 +380,12 @@ public partial class Mor : System.Web.UI.Page
     public void fill_Add_mor_portofolio(DataTable dt)
     {
 
+        string smt = "SELECT  distinct value as PORTFOLIO FROM [MetLifeDD].[dbo].[T_GENERAL_METDD_DATA] where [Key] = 'Portfolio' and [Value] <> 'All' ";
 
-        MOR_Add_Portfolio.DataSource = Distinct_Column_Values(dt, "PORTFOLIO", false);
+      
+        MOR_Add_Portfolio.DataSource = dal.SelectDetails(smt);
+
+    //    MOR_Add_Portfolio.DataSource = Distinct_Column_Values(dt, "PORTFOLIO", false);
 
         MOR_Add_Portfolio.DataTextField = "PORTFOLIO";
 
@@ -444,8 +450,11 @@ public partial class Mor : System.Web.UI.Page
 
 
         DataView dv = new DataView(dt);
+        dv.Sort = field_name + " Asc";
 
-        DataTable d_dt = dv.ToTable(field_name, true, field_name);
+
+
+         DataTable d_dt = dv.ToTable(field_name, true, field_name);
 
         if (b_should_add_ALL)
         {
