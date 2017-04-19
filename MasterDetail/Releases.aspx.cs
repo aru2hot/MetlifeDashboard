@@ -75,7 +75,7 @@ public partial class Releases : System.Web.UI.Page
 
         DAL dal = new DAL();
         DataTable dt = new DataTable("UDS_DATA");
-        dt = dal.SelectDetails("select U.* , R.*, datename(mm,releasestartdate)  + ' ' + CAST(YEAR(releasestartdate) as varchar) as ReleaseMonth from [UDS] as  U left  join  [T_RELEASE_INFO] as R ON U.UDSPROJECTKEY = R.UDS_Key");
+        dt = dal.SelectDetails("select U.* , R.*, datename(mm,releasestartdate)  + ' ' + CAST(YEAR(releasestartdate) as varchar) as ReleaseMonth from [UDS] as  U left  join  [T_RELEASE_INFO] as R ON U.UDSPROJECTKEY = R.UDS_Key where dateDiff(MONTH,[REPORTINGMONTH],getdate()) <= 2");
         dal = null;
         return dt;
     }
