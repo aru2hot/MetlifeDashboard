@@ -139,7 +139,7 @@
                                  />
                               <input type="button"  ID="MOR_SHOW_HIDE_FILTER" Value="SHOW FILTER" Class="btn btn-sm btn-warning " onclick="Show_hide_MOR_filter()"   />
 
-                            <asp:LinkButton runat="server" ID="MOR_Excel_Export" Text="DOWNLOAD AS EXCEL" OnClick="MOR_Excel_Export_Click"   CssClass="btn btn-sm alert-warning " >
+                            <asp:LinkButton runat="server" ID="MOR_Excel_Export" CausesValidation="false" Text="DOWNLOAD AS EXCEL" OnClick="MOR_Excel_Export_Click"   CssClass="btn btn-sm alert-warning " >
 
                             </asp:LinkButton>
                         </div>
@@ -359,11 +359,14 @@
                                     </ItemTemplate>
 
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="HEALTH-LAST WEEK">
+                               
+
+                                 <asp:TemplateField HeaderText="HEALTH-LAST WEEK">
 
                                     <ItemTemplate>
 
-                                        <p class="<%# Eval("LAST_WEEK_COLOR").ToString() == "NA" ? "NA" : Eval("LAST_WEEK_COLOR").ToString() %>"><span class="fa fa-circle"></span></p>
+                                    <p class="<%# Eval("LAST_WEEK_COLOR").ToString() == "NA" ? "NA" : Eval("LAST_WEEK_COLOR").ToString() %>"><span class="fa fa-circle"></span></p>
+                                    
 
 
 

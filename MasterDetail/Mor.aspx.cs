@@ -328,7 +328,7 @@ public partial class Mor : System.Web.UI.Page
         MOR_Add_Category.SelectedValue = dt.Rows[0]["Category"].ToString();
         MOR_Add_Project_Name.Text = dt.Rows[0]["Project_name"].ToString();
 
-        MOR_Add_Description.InnerHtml = dt.Rows[0]["description"].ToString().TrimStart();
+        MOR_Add_Description.InnerText = dt.Rows[0]["description"].ToString().TrimStart();
 
         MOR_Add_LastWeekStatus.SelectedValue = dt.Rows[0]["LAST_WEEK_COLOR"].ToString();
         MOR_Add_CurrentWeekStatus.SelectedValue = dt.Rows[0]["CURRENT_WEEK_COLOR"].ToString();
@@ -490,77 +490,25 @@ public partial class Mor : System.Web.UI.Page
         {
             HtmlTextWriter hw = new HtmlTextWriter(sw);
 
-            //To Export all pages
-            //  mor_grid.AllowPaging = false;
-            //   this.BindGrid();
-
-            //mor_grid.HeaderRow.BackColor = Color.White;
-            //foreach (TableCell cell in mor_grid.HeaderRow.Cells)
-            //{
-            //    cell.BackColor = mor_grid.HeaderStyle.BackColor;
-            //}
-            //foreach (GridViewRow row in mor_grid.Rows)
-            //{
-            //    row.BackColor = Color.White;
-            //    foreach (TableCell cell in row.Cells)
-            //    {
-            //        if (row.RowIndex % 2 == 0)
-            //        {
-            //            cell.BackColor = mor_grid.AlternatingRowStyle.BackColor;
-            //        }
-            //        else
-            //        {
-            //            cell.BackColor = mor_grid.RowStyle.BackColor;
-            //        }
-            //        cell.CssClass = "textmode";
-            //    }
-            //}
-
             mor_grid.HeaderRow.Style.Add("background-color", "#FFFFFF");
             //Applying stlye to gridview header cells
             for (int i = 0; i < mor_grid.HeaderRow.Cells.Count; i++)
             {
                 mor_grid.HeaderRow.Cells[i].Style.Add("background-color", "#df5015");
             }
-            
-            //for (int i = 0; i < mor_grid.Rows.Count; i++)
-            //{
-            //    for (int j = 5; j < 7; j++)
-            //    {
-            //        if (mor_grid.Rows[i].Cells[j].Text.Contains("YELLOW"))
-            //        {
-            //            mor_grid.Rows[i].Cells[j].Style.Add("background-color", "#ffff00");
-            //        }
 
-            //        else if (mor_grid.Rows[i].Cells[j].Text.Contains("GREEN"))
-            //        {
-            //            mor_grid.Rows[i].Cells[j].Style.Add("background-color", "#00ff00");
-            //        }
 
-            //        else if (mor_grid.Rows[i].Cells[j].Text.Contains("RED"))
-            //        {
-            //            mor_grid.Rows[i].Cells[j].Style.Add("background-color", "#ff0000");
-            //        }
-            //    }
-
-                
-
-            //}
 
             mor_grid.RenderControl(hw);
 
-            //style to format numbers to string
-            //string style = @"<style> .textmode { } </style>";
-            //Response.Write(style);
-     //       Response.Output.Write(sw.ToString().Replace("</html>","").Replace("<html>",""));
-
-            Response.Output.Write(sw.ToString().Replace("</html>", "").Replace("<html>", "").Replace("<p class=\"YELLOW\"><span class=\"fa fa-circle\"></span></p>", "<p style=background-color:#ffff00>YELLOW</p>"));
+           
+            Response.Output.Write(sw.ToString().Replace("</html>", "").Replace("<html>", "").Replace("<td>\r\n\r\n                                        <p class=\"YELLOW\"><span class=\"fa fa-circle\"></span></p>", "<td style=\"background-color:#ffff00;\" >\r\n\r\n <p>YELLOW</p>").Replace("<html>", "").Replace("<td>\r\n\r\n                                        <p class=\"RED\"><span class=\"fa fa-circle\"></span></p>", "<td style=\"background-color:#fffc5e;\" >\r\n\r\n <p>RED</p>").Replace("<td>\r\n\r\n                                        <p class=\"GREEN\"><span class=\"fa fa-circle\"></span></p>", "<td style=\"background-color:#5eea3f;\" >\r\n\r\n <p>GREEN</p>").Replace("<td>\r\n\r\n                                        <p class=\"NA\"><span class=\"fa fa-circle\"></span></p>", "<td style=\"background-color:#99988e;\" >\r\n\r\n <p>NA</p>"));
+   
             Response.Flush();
             Response.End();
+          
 
 
-          
-          
         }
     }
 
@@ -573,14 +521,7 @@ public partial class Mor : System.Web.UI.Page
         dal.UpdateDB(smt);
 
         DataTable dt = Get_MOR_DATA();
-        //if (Session["should_proj_name_refresh"] != null)
-        //{
-        //    if (Session["should_proj_name_refresh"].ToString() == "Yes")
-        //    {
-        //        fill_mor_projectname(dt);
-        //        Session["should_proj_name_refresh"] = "No";
-        //    }
-        //}
+      
 
 
         dt = MOR_filter_records(dt);
