@@ -9,15 +9,14 @@
      <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
     <script src="ckeditor/ckeditor.js"></script>
-
+    <script src="Scripts/ScrollHeader.js"></script>
     <script type="text/javascript" >
         //$(document).ready(function () {
             
         //    loadControl("MainContent_MOR_Add_Description");
         //});
         
-        function pageLoad()
-        {
+        function pageLoad() {
           
             loadControl("MainContent_MOR_Add_Description");
             loadControl("MainContent_MOR_Add_Risks");
@@ -36,26 +35,45 @@
 
         }
 
-        function Show_hide_MOR_filter()
-        {
-            
-            if(mor_filters.hidden)
-            {
+        function Show_hide_MOR_filter(){
+            if(mor_filters.hidden){
                 mor_filters.hidden = false;
-                MOR_SHOW_HIDE_FILTER.value = "HIDE FILTER"
+                //MOR_SHOW_HIDE_FILTER.value = "HIDE FILTER"
             }
             else {
                 mor_filters.hidden = true;
-                MOR_SHOW_HIDE_FILTER.value = "SHOW FILTER"
+                // MOR_SHOW_HIDE_FILTER.value = "SHOW FILTER"
             }
         }
 
         
     </script>
+    <style>
+        .morTable thead tr th:first-child,
+        .morTable tbody tr td:first-child {
+            width: 4em;
+            min-width: 4em;
+            max-width: 4em;
+            word-break: break-all;
+        }
+
+        .morTable tbody {
+            height: 100px !important; 
+            overflow-y: auto !important;  /* Trigger vertical scroll    */
+            overflow-x: hidden !important;  /* Hide the horizontal scroll */
+        }
+        .FixedHeader {
+            position: absolute;
+            font-weight: bold;
+        }     
+    </style>
+    <div class="panel panel-primary">
     <div class="panel-heading">
         MetLife Delivery Dashboard
-    </div>
         
+            <input type="button" id="MOR_SHOW_HIDE_FILTER" value="Toggle Filter" class="btn btn-sm btn-default pull-right" onclick="Show_hide_MOR_filter()" />
+    </div>
+        <div class="panel-body">
     <div class="tab-pane" id="mor_div">
         <%--<asp:UpdatePanel ID="up_mor_filters" runat="server">
             <ContentTemplate>--%>
@@ -64,7 +82,7 @@
                 <div id="div_mor_filters" class="row wellCustom">
                     <div class="form-group col-md-3">
                         Portfolio<br />
-                        <asp:DropDownList ID="mor_portofolio" CssClass="accordian-content form-control boldtext" runat="server" OnSelectedIndexChanged="mor_portofolio_SelectedIndexChanged">
+                                <asp:DropDownList ID="mor_portofolio" CssClass="form-control boldtext" runat="server" OnSelectedIndexChanged="mor_portofolio_SelectedIndexChanged">
                         </asp:DropDownList>
                     </div>
 
@@ -117,27 +135,20 @@
                     </div>
 
                 </div>
-
-                
-
-
-            </div>
-
-
-        </div>
-        <%--    </ContentTemplate>
-
-        </asp:UpdatePanel>--%>
+   
       <div class="row wellCustom">
-                    <div class="form-group col-md-6">
-                        <div class="pull-right vertical-align">
-                            <asp:LinkButton runat="server" ID="MOR_Add_Button" Text="ADD NEW" CssClass="btn btn-sm btn-success" OnClick="MOR_Add_Button_Click" />
+                            <div class="pull-right">
+                                <div>
+                                    <asp:LinkButton runat="server" ID="MOR_Add_Button" Text="ADD NEW" CssClass="btn btn-sm btn-success" OnClick="MOR_Add_Button_Click">
+                                    <span class="fa fa-plus"></span>&nbsp;ADD NEW    
+                                    </asp:LinkButton>
                             <asp:LinkButton ID="MOR_Search_Button" runat="server"  CssClass="btn btn-sm btn-danger" OnClientClick="Show_hide_MOR_filter()" OnClick="MOR_Search_Button_Click" CausesValidation="False">
                                     <span class="fa fa-search"></span>&nbsp;SEARCH
                             </asp:LinkButton>
-                            <asp:LinkButton runat="server" ID="MOR_Reset" Text="RESET" CssClass="btn btn-sm btn-dark " OnClick="MOR_Reset_Click"
-                                 />
-                              <input type="button"  ID="MOR_SHOW_HIDE_FILTER" Value="SHOW FILTER" Class="btn btn-sm btn-warning " onclick="Show_hide_MOR_filter()"   />
+                                    <asp:LinkButton runat="server" ID="MOR_Reset" Text="RESET" CssClass="btn btn-sm btn-dark " OnClick="MOR_Reset_Click">
+                                    <span class="fa fa-refresh"></span>&nbsp;RESET
+                                    </asp:LinkButton>
+
 
                             <asp:LinkButton runat="server" ID="MOR_Excel_Export" CausesValidation="false" Text="DOWNLOAD AS EXCEL" OnClick="MOR_Excel_Export_Click"   CssClass="btn btn-sm alert-warning " >
 
@@ -145,6 +156,16 @@
                         </div>
                     </div>
                 </div>
+
+
+
+                    </div>
+
+
+                </div>
+                <%--    </ContentTemplate>
+
+        </asp:UpdatePanel>--%>
 
         <div class="tab-pane" id="mor_resultview">
             <morpop:ModalPopupExtender ID="ModalPopupExtender_MOR" runat="server" PopupControlID="MOR_PopUp" TargetControlID="MOR_Add_Button"
@@ -162,6 +183,7 @@
                         <div class="col-xs-6">
                             <div style="vertical-align: middle;">
                                 Add/Update MOR Details
+                           
                             </div>
                         </div>
                         <div class="col-xs-6">
@@ -188,6 +210,7 @@
 
                                     <div class="form-group col-md-4">
                                                 Project Name
+                                               
                                                 <asp:RequiredFieldValidator ID="rf_MOR_Add_Project_Name" runat="server" ControlToValidate="MOR_Add_Project_Name" Text="*" ForeColor="Red"></asp:RequiredFieldValidator><br />
                                         <asp:TextBox ID="MOR_Add_Project_Name" CssClass="accordian-content form-control boldtext" runat="server" TextMode="SingleLine" AutoPostBack="false" />
 
@@ -205,6 +228,7 @@
                                 <div class="row wellCustom">
                                     <div class="form-group col-md-12 ">
                                                 Description
+                                              
                                                <%-- <asp:RequiredFieldValidator ID="rf_MOR_Add_Description" runat="server" ControlToValidate="MOR_Add_Description" ForeColor="Red">*</asp:RequiredFieldValidator><br />--%>
                                         <%--<asp:TextBox Width="600px" Height="175px" Columns="100" TextMode="MultiLine" runat="server" ID="MOR_Add_Description"></asp:TextBox>--%>
                                         <textarea id="MOR_Add_Description"   name="MOR_Add_Description" runat="server" style="outline-width: thin; min-height: 200px; min-width: 850px; width: 900px"></textarea>
@@ -295,12 +319,15 @@
         <div class="tab-pane" id="mor_gridview" runat="server">
             <asp:UpdatePanel ID="mor_filtered_gridview" runat="server" UpdateMode="Always" ChildrenAsTriggers="true">
                 <ContentTemplate>
-                    <div style="overflow-x: scroll; overflow-y: scroll; max-height: 800px; max-width: 2000px;">
-                        <asp:GridView Font-Size="XX-Small" HeaderStyle-Font-Size="Small" HeaderStyle-BorderColor="MediumSlateBlue" ID="mor_grid" CssClass="tableSmall table-responsive table-bordered table-hover" DataKeyNames="MOR_ID" OnSelectedIndexChanged="mor_grid_SelectedIndexChanged" AutoGenerateSelectButton="true" runat="server" OnRowDeleting="mor_grid_RowDeleting" AutoGenerateColumns="false" ShowHeaderWhenEmpty="true" EmptyDataText="No Records Found" AutoGenerateDeleteButton="true" HeaderStyle-ForeColor="#000000" HeaderStyle-BackColor="#339966">
-                            <AlternatingRowStyle BackColor="LightGray"></AlternatingRowStyle>
+                            <div style="height:500px;max-height:500px;min-height:50px;overflow-y:auto;">
+                                <asp:GridView ID="mor_grid" CssClass="tableSmall table-responsive table-bordered table-hover morTable" DataKeyNames="MOR_ID"
+                                    OnSelectedIndexChanged="mor_grid_SelectedIndexChanged" runat="server"
+                                    OnRowDeleting="mor_grid_RowDeleting" AutoGenerateColumns="false" ShowHeaderWhenEmpty="true"
+                                    EmptyDataText="No Records Found" ShowHeader="true">
+                                    <%-- <AlternatingRowStyle BackColor="LightGray"></AlternatingRowStyle>--%>
                             <Columns>
-
-
+                                        <asp:CommandField ButtonType="Image" ShowSelectButton="true" ShowDeleteButton="true" ItemStyle-Width="100"
+                                            SelectImageUrl="~/images/check_icon.png" DeleteImageUrl="~/images/delete-icon1.png" />
                                 <asp:TemplateField HeaderText="MOR_ID" Visible="false">
 
                                     <ItemTemplate>
@@ -361,34 +388,21 @@
                                 </asp:TemplateField>
                                
 
-                                 <asp:TemplateField HeaderText="HEALTH-LAST WEEK">
-
+                                        <asp:TemplateField HeaderText="HEALTH-LAST WEEK" ItemStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Center">
                                     <ItemTemplate>
-
-                                    <p class="<%# Eval("LAST_WEEK_COLOR").ToString() == "NA" ? "NA" : Eval("LAST_WEEK_COLOR").ToString() %>"><span class="fa fa-circle"></span></p>
-                                    
-
-
-
+                                    <p class="<%# Eval("LAST_WEEK_COLOR").ToString() == "NA" ? "NA" : Eval("LAST_WEEK_COLOR").ToString() %>"><span class="fa fa-circle"></span></p>                                    
                                     </ItemTemplate>
-
                                 </asp:TemplateField>
 
 
-                                <asp:TemplateField HeaderText="HEALTH-CURRENT WEEK">
-
+                                        <asp:TemplateField HeaderText="HEALTH-CURRENT WEEK" ItemStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Center">
                                     <ItemTemplate>
-
                                         <p class="<%# Eval("CURRENT_WEEK_COLOR").ToString() == "NA" ? "NA" : Eval("CURRENT_WEEK_COLOR").ToString() %>"><span class="fa fa-circle"></span></p>
-
-
-
                                     </ItemTemplate>
-
                                 </asp:TemplateField>
 
 
-                                <asp:TemplateField HeaderText="PROJECTED-NEXT WEEK">
+                                        <asp:TemplateField HeaderText="PROJECTED-NEXT WEEK"  ItemStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Center">
 
                                     <ItemTemplate>
 
@@ -410,11 +424,11 @@
 
                                 </asp:TemplateField>
 
-                                <asp:TemplateField HeaderText="WEEK ENDING">
+                                        <asp:TemplateField HeaderText="WEEK ENDING" ItemStyle-Width="200px" HeaderStyle-Width="200px">
 
                                     <ItemTemplate>
 
-                                        <div>
+                                                <div style="width:100px;">
                                             <%# Eval("WEEK_ENDING") %>
                                         </div>
 
@@ -434,21 +448,14 @@
                                 </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
-
-
                     </div>
-
-
                 </ContentTemplate>
-
                 <Triggers>
                     <asp:AsyncPostBackTrigger ControlID="MOR_Search_Button" EventName="Click" />
-
-
                 </Triggers>
-
             </asp:UpdatePanel>
-
+                </div>
+            </div>
 
         </div>
     </div>

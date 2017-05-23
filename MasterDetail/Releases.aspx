@@ -121,13 +121,13 @@
 
             <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
-                    <div class="tab-content" style="overflow-x: scroll; overflow-y: scroll; max-height: 800px; max-width: 1500px;">
+                    <div class="tab-content" style="overflow-x: scroll; overflow-y: scroll; max-height: 500px; max-width: 1500px;">
                         <div class="panel-body">
                             <asp:GridView ID="prior_release_grid" runat="server" AutoGenerateColumns="false"
                                 CssClass="tableSmall table-responsive table-bordered table-hover"
-                                ShowHeaderWhenEmpty="true" EmptyDataText="No records Found" OnRowDataBound="prior_release_grid_RowDataBound" CellPadding="4" ForeColor="#333333" GridLines="None">
-
-                                <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                                ShowHeaderWhenEmpty="true" EmptyDataText="No records Found" 
+                                OnRowDataBound="prior_release_grid_RowDataBound">
+                                
                                 <Columns>
                                     <asp:TemplateField HeaderText="PORTFOLIO">
                                         <ItemTemplate>
@@ -249,7 +249,7 @@
 
 
                                 </Columns>
-                                <EditRowStyle BackColor="#7C6F57"></EditRowStyle>
+                     <%--           <EditRowStyle BackColor="#7C6F57"></EditRowStyle>
 
                                 <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White"></FooterStyle>
 
@@ -267,38 +267,42 @@
 
                                 <SortedDescendingCellStyle BackColor="#D4DFE1"></SortedDescendingCellStyle>
 
-                                <SortedDescendingHeaderStyle BackColor="#15524A"></SortedDescendingHeaderStyle>
+                                <SortedDescendingHeaderStyle BackColor="#15524A"></SortedDescendingHeaderStyle>--%>
                             </asp:GridView>
                         </div>
-
-
-                        </di>
 
                     </div>
                 </div>
                 <div id="menu1" class="tab-pane fade">
-                    <div class="tab-content" style="overflow-x: scroll; overflow-y: scroll; max-height: 400px; max-width: 1500px;">
+                    <div class="tab-content" style="overflow-x: scroll; overflow-y: scroll; max-height: 500px; max-width: 1500px;">
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server" ChildrenAsTriggers="true">
                             <ContentTemplate>
                                 <div class="panel-body">
                                     <asp:GridView ID="current_release_grid" runat="server" AutoGenerateColumns="false"
                                         CssClass="tableSmall table-responsive table-bordered table-hover"
-                                        ShowHeaderWhenEmpty="true" DataKeyNames="UDSPROJECTKEY" AutoGenerateSelectButton="true" OnSelectedIndexChanged="current_release_grid_SelectedIndexChanged" EmptyDataText="No records Found" OnRowDataBound="current_release_grid_RowDataBound" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                        ShowHeaderWhenEmpty="true" DataKeyNames="UDSPROJECTKEY" 
+                                        OnSelectedIndexChanged="current_release_grid_SelectedIndexChanged" 
+                                        EmptyDataText="No records Found" OnRowDataBound="current_release_grid_RowDataBound" 
+                                        > 
 
-                                        <AlternatingRowStyle BackColor="White"></AlternatingRowStyle>
+                                        <%--<AlternatingRowStyle BackColor="White"></AlternatingRowStyle>--%>
                                         <Columns>
+                                            <asp:CommandField ButtonType="Image" ShowSelectButton="true" 
+                                             ItemStyle-Width="100"
+                                            SelectImageUrl="~/images/check_icon.png"  /> 
+                                             
                                             <asp:TemplateField HeaderText="PORTFOLIO">
                                                 <ItemTemplate>
-                                                    <div>
+                                                    <div style="width:150px;">
                                                         <asp:Label ID="GV_F_portfolio" runat="server" Text=' <%# Eval("PORTFOLIO") %>'></asp:Label>
 
                                                     </div>
                                                 </ItemTemplate>
 
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="RELEASE NAME">
+                                            <asp:TemplateField HeaderText="RELEASE NAME"  ItemStyle-Width="150px" HeaderStyle-Width="150px">
                                                 <ItemTemplate>
-                                                    <div>
+                                                    <div style="width:150px;">
                                                         <asp:Label ID="GV_CF_ReleaseName" runat="server" Text=' <%# Eval("RELEASENAME") %>'></asp:Label>
 
                                                     </div>
@@ -372,16 +376,16 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="RELEASE DATE">
+                                            <asp:TemplateField HeaderText="RELEASE DATE"  ItemStyle-Width="100px" HeaderStyle-Width="100px">
                                                 <ItemTemplate>
-                                                    <div>
+                                                    <div style="width:100px;">
                                                         <%# Eval("RELEASESTARTDATE") %>
                                                     </div>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="QA START DATE">
+                                            <asp:TemplateField HeaderText="QA START DATE"  ItemStyle-Width="100px" HeaderStyle-Width="100px">
                                                 <ItemTemplate>
-                                                    <div>
+                                                    <div style="width:100px;">
                                                         <%# Eval("QA_Start_dt") %>
 
 
@@ -391,9 +395,9 @@
 
 
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="QA END DATE">
+                                            <asp:TemplateField HeaderText="QA END DATE"  ItemStyle-Width="100px" HeaderStyle-Width="100px">
                                                 <ItemTemplate>
-                                                    <div>
+                                                    <div style="width:100px;">
                                                         <%# Eval("QA_End_dt") %>
                                                     </div>
                                                 </ItemTemplate>
@@ -411,9 +415,9 @@
 
 
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="UAT START DATE">
+                                            <asp:TemplateField HeaderText="UAT START DATE"  ItemStyle-Width="100px" HeaderStyle-Width="100px">
                                                 <ItemTemplate>
-                                                    <div>
+                                                    <div style="width:100px;">
                                                         <%# Eval("UAT_Start_dt") %>
                                                     </div>
                                                 </ItemTemplate>
@@ -425,9 +429,9 @@
                                                 </EditItemTemplate>
 
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="UAT END DATE">
+                                            <asp:TemplateField HeaderText="UAT END DATE"  ItemStyle-Width="100px" HeaderStyle-Width="100px">
                                                 <ItemTemplate>
-                                                    <div>
+                                                    <div style="width:100px;">
                                                         <%# Eval("UAT_End_dt") %>
                                                     </div>
                                                 </ItemTemplate>
@@ -455,9 +459,9 @@
                                                 </ItemTemplate>
 
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="LAST MODIFIED DATE">
+                                            <asp:TemplateField HeaderText="LAST MODIFIED DATE"  ItemStyle-Width="100px" HeaderStyle-Width="100px">
                                                 <ItemTemplate>
-                                                    <div>
+                                                    <div style="width:100px;">
                                                         <%# Eval("Last_modified_date") %>
                                                     </div>
                                                 </ItemTemplate>
@@ -504,7 +508,7 @@
 
                                         </Columns>
 
-                                        <EditRowStyle BackColor="#7C6F57"></EditRowStyle>
+                                        <%--<EditRowStyle BackColor="#7C6F57"></EditRowStyle>
 
                                         <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White"></FooterStyle>
 
@@ -522,7 +526,7 @@
 
                                         <SortedDescendingCellStyle BackColor="#D4DFE1"></SortedDescendingCellStyle>
 
-                                        <SortedDescendingHeaderStyle BackColor="#15524A"></SortedDescendingHeaderStyle>
+                                        <SortedDescendingHeaderStyle BackColor="#15524A"></SortedDescendingHeaderStyle>--%>
                                     </asp:GridView>
                                 </div>
                             </ContentTemplate>
@@ -674,8 +678,6 @@
 
                         </asp:Panel>
 
-
-
                     </div>
                 </div>
                 <div id="menu2" class="tab-pane fade">
@@ -685,9 +687,12 @@
                                 <div class="panel-body">
                                     <asp:GridView ID="future_release_grid" runat="server" AutoGenerateColumns="false"
                                         CssClass="tableSmall table-responsive table-bordered table-hover"
-                                        ShowHeaderWhenEmpty="true" DataKeyNames="UDSPROJECTKEY" AutoGenerateSelectButton="true" OnSelectedIndexChanged="future_release_grid_SelectedIndexChanged" EmptyDataText="No records Found" OnRowDataBound="future_release_grid_RowDataBound" CellPadding="4" ForeColor="#333333" GridLines="None">
-                                        <AlternatingRowStyle BackColor="White" ForeColor="#284775"></AlternatingRowStyle>
+                                        ShowHeaderWhenEmpty="true" DataKeyNames="UDSPROJECTKEY" 
+                                        OnSelectedIndexChanged="future_release_grid_SelectedIndexChanged" EmptyDataText="No records Found" OnRowDataBound="future_release_grid_RowDataBound">
+                                        <%--<AlternatingRowStyle BackColor="White" ForeColor="#284775"></AlternatingRowStyle>--%>
                                         <Columns>
+                                            <asp:CommandField ButtonType="Image" ShowSelectButton="true"  ItemStyle-Width="100"
+                                            SelectImageUrl="~/images/check_icon.png" />
                                             <asp:TemplateField HeaderText="PORTFOLIO">
                                                 <ItemTemplate>
                                                     <div>
@@ -698,9 +703,9 @@
 
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="RELEASE NAME">
+                                            <asp:TemplateField HeaderText="RELEASE NAME"  ItemStyle-Width="150px" HeaderStyle-Width="150px">
                                                 <ItemTemplate>
-                                                    <div>
+                                                    <div style="width:150px;">
                                                         <asp:Label ID="GV_F_ReleaseName" runat="server" Text=' <%# Eval("RELEASENAME") %>'></asp:Label>
 
                                                     </div>
@@ -772,16 +777,16 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="RELEASE DATE">
+                                            <asp:TemplateField HeaderText="RELEASE DATE"  ItemStyle-Width="100px" HeaderStyle-Width="100px">
                                                 <ItemTemplate>
-                                                    <div>
+                                                    <div style="width:100px;">
                                                         <%# Eval("RELEASESTARTDATE") %>
                                                     </div>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="QA START DATE">
+                                            <asp:TemplateField HeaderText="QA START DATE" ItemStyle-Width="100px" HeaderStyle-Width="100px">
                                                 <ItemTemplate>
-                                                    <div>
+                                                    <div style="width:100px;">
                                                         <%# Eval("QA_Start_dt") %>
 
 
@@ -791,9 +796,9 @@
 
 
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="QA END DATE">
+                                            <asp:TemplateField HeaderText="QA END DATE" ItemStyle-Width="100px" HeaderStyle-Width="100px">
                                                 <ItemTemplate>
-                                                    <div>
+                                                    <div style="width:100px;">
                                                         <%# Eval("QA_End_dt") %>
                                                     </div>
                                                 </ItemTemplate>
@@ -811,9 +816,9 @@
 
 
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="UAT START DATE">
+                                            <asp:TemplateField HeaderText="UAT START DATE" ItemStyle-Width="100px" HeaderStyle-Width="100px">
                                                 <ItemTemplate>
-                                                    <div>
+                                                    <div style="width:100px;">
                                                         <%# Eval("UAT_Start_dt") %>
                                                     </div>
                                                 </ItemTemplate>
@@ -825,9 +830,9 @@
                                                 </EditItemTemplate>
 
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="UAT END DATE">
+                                            <asp:TemplateField HeaderText="UAT END DATE" ItemStyle-Width="100px" HeaderStyle-Width="100px">
                                                 <ItemTemplate>
-                                                    <div>
+                                                    <div style="width:100px;">
                                                         <%# Eval("UAT_End_dt") %>
                                                     </div>
                                                 </ItemTemplate>
@@ -855,9 +860,9 @@
                                                 </ItemTemplate>
 
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="LAST MODIFIED DATE">
+                                            <asp:TemplateField HeaderText="LAST MODIFIED DATE" ItemStyle-Width="100px" HeaderStyle-Width="100px">
                                                 <ItemTemplate>
-                                                    <div>
+                                                    <div style="width:100px;">
                                                         <%# Eval("Last_modified_date") %>
                                                     </div>
                                                 </ItemTemplate>
@@ -904,7 +909,7 @@
 
                                         </Columns>
 
-                                        <EditRowStyle BackColor="#999999"></EditRowStyle>
+                                       <%-- <EditRowStyle BackColor="#999999"></EditRowStyle>
 
                                         <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White"></FooterStyle>
 
@@ -922,7 +927,7 @@
 
                                         <SortedDescendingCellStyle BackColor="#FFFDF8"></SortedDescendingCellStyle>
 
-                                        <SortedDescendingHeaderStyle BackColor="#6F8DAE"></SortedDescendingHeaderStyle>
+                                        <SortedDescendingHeaderStyle BackColor="#6F8DAE"></SortedDescendingHeaderStyle>--%>
                                     </asp:GridView>
                                 </div>
 
@@ -1065,7 +1070,7 @@
                                         </div>
 
                                         <div style="padding: 10px;">
-                                            <asp:Button ID="F_Update" runat="server" CssClass="btn btn-sm btn-success" OnClick="F_Update_Click" Text="UPDATE" />
+                                            <asp:Button ID="F_Update" runat="server" CssClass="btn btn-sm btn-success" CausesValidation="false" OnClick="F_Update_Click" Text="UPDATE" />
                                             <asp:Button ID="F_Close" runat="server" Text="CLOSE" CssClass="btn btn-sm btn-danger" OnClick="F_Close_Click"></asp:Button>
                                         </div>
                                     </div>
@@ -1075,14 +1080,9 @@
                                 </Triggers>
                             </asp:UpdatePanel>
 
-
-
-
-
                         </asp:Panel>
 
                     </div>
-
 
                 </div>
             </div>

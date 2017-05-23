@@ -167,11 +167,14 @@
                                 </div>
                                 <div class="form-group col-md-2">
                                     Status<br />
-                                    <asp:RadioButtonList ID="RAG_status" runat="server" CssClass="btn-group" data-toggle="buttons" RepeatDirection="Horizontal">
+                                    <div class="btn-group">
+                                     <asp:RadioButtonList ID="RAG_status" runat="server" RepeatDirection="Horizontal">
                                         <asp:ListItem class="btn btn-xs btn-danger">RED</asp:ListItem>
                                         <asp:ListItem class="btn btn-xs btn-success">GREEN</asp:ListItem>
                                         <asp:ListItem Selected="True" class="btn btn-xs btn-primary">All</asp:ListItem>
                                     </asp:RadioButtonList>
+                                </div>
+
                                 </div>
 
 

@@ -48,6 +48,12 @@ public partial class Releases : System.Web.UI.Page
 
         prior_release_grid.DataBind();
 
+        //This replaces <td> with <th>    
+        prior_release_grid.UseAccessibleHeader = true;
+        //This will add the <thead> and <tbody> elements    
+        prior_release_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
+        if (prior_release_grid.Rows.Count > 0)
+            prior_release_grid.FooterRow.TableSection = TableRowSection.TableFooter;
         #endregion
 
         #region current_tab
@@ -57,6 +63,13 @@ public partial class Releases : System.Web.UI.Page
 
         current_release_grid.DataBind();
 
+        //This replaces <td> with <th>    
+        current_release_grid.UseAccessibleHeader = true;
+        //This will add the <thead> and <tbody> elements    
+        current_release_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
+        if (current_release_grid.Rows.Count > 0)
+            current_release_grid.FooterRow.TableSection = TableRowSection.TableFooter;
+
         #endregion
 
         #region future_tab
@@ -65,6 +78,13 @@ public partial class Releases : System.Web.UI.Page
         future_release_grid.DataSource = Get_Future_Data();
 
         future_release_grid.DataBind();
+
+        //This replaces <td> with <th>    
+        future_release_grid.UseAccessibleHeader = true;
+        //This will add the <thead> and <tbody> elements    
+        future_release_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
+        if (future_release_grid.Rows.Count > 0)
+            future_release_grid.FooterRow.TableSection = TableRowSection.TableFooter;
 
         #endregion
     }
@@ -883,12 +903,6 @@ public partial class Releases : System.Web.UI.Page
             }
 
         }
-
-
-
-
-
-
 
 
         if (query != null)

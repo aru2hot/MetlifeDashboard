@@ -297,6 +297,14 @@ public partial class Mor : System.Web.UI.Page
         dt = MOR_filter_records(dt);
         mor_grid.DataSource = dt;
         mor_grid.DataBind();
+        
+        //This replaces <td> with <th>    
+        mor_grid.UseAccessibleHeader = true;
+        //This will add the <thead> and <tbody> elements    
+        mor_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
+        if(mor_grid.Rows.Count > 0)
+            mor_grid.FooterRow.TableSection = TableRowSection.TableFooter;
+       // ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "FixHeader", "FreezeH()", true);
     }
 
     private DataTable Get_MOR_DATA()
@@ -359,6 +367,12 @@ public partial class Mor : System.Web.UI.Page
         mor_grid.DataSource = dt;
 
         mor_grid.DataBind();
+        //This replaces <td> with <th>    
+        mor_grid.UseAccessibleHeader = true;
+        //This will add the <thead> and <tbody> elements    
+        mor_grid.HeaderRow.TableSection = TableRowSection.TableHeader;
+        if (mor_grid.Rows.Count > 0)
+            mor_grid.FooterRow.TableSection = TableRowSection.TableFooter;
     }
 
     public void fill_mor_portofolio(DataTable dt)
@@ -510,8 +524,9 @@ public partial class Mor : System.Web.UI.Page
 
             mor_grid.RenderControl(hw);
 
-           
-            Response.Output.Write(sw.ToString().Replace("</html>", "").Replace("<html>", "").Replace("<td>\r\n\r\n                                        <p class=\"YELLOW\"><span class=\"fa fa-circle\"></span></p>", "<td style=\"background-color:#ffff00;\" >\r\n\r\n <p>YELLOW</p>").Replace("<html>", "").Replace("<td>\r\n\r\n                                        <p class=\"RED\"><span class=\"fa fa-circle\"></span></p>", "<td style=\"background-color:#fffc5e;\" >\r\n\r\n <p>RED</p>").Replace("<td>\r\n\r\n                                        <p class=\"GREEN\"><span class=\"fa fa-circle\"></span></p>", "<td style=\"background-color:#5eea3f;\" >\r\n\r\n <p>GREEN</p>").Replace("<td>\r\n\r\n                                        <p class=\"NA\"><span class=\"fa fa-circle\"></span></p>", "<td style=\"background-color:#99988e;\" >\r\n\r\n <p>NA</p>"));
+            string output = sw.ToString().Replace("</html>", "").Replace("<html>", "").Replace("<td>\r\n\r\n                                        <p class=\"YELLOW\"><span class=\"fa fa-circle\"></span></p>", "<td style=\"background-color:#ffff00;\" >\r\n\r\n <p>YELLOW</p>").Replace("<html>", "").Replace("<td>\r\n\r\n                                        <p class=\"RED\"><span class=\"fa fa-circle\"></span></p>", "<td style=\"background-color:#ff0000;\" >\r\n\r\n <p>RED</p>").Replace("<td>\r\n\r\n                                        <p class=\"GREEN\"><span class=\"fa fa-circle\"></span></p>", "<td style=\"background-color:#5eea3f;\" >\r\n\r\n <p>GREEN</p>").Replace("<td>\r\n\r\n                                        <p class=\"NA\"><span class=\"fa fa-circle\"></span></p>", "<td style=\"background-color:#99988e;\" >\r\n\r\n <p>NA</p>");
+            output = output.ToString().Replace("</html>", "").Replace("<html>", "").Replace("<td>\r\n\r\n                                    <p class=\"YELLOW\"><span class=\"fa fa-circle\"></span></p>", "<td style=\"background-color:#ffff00;\" >\r\n\r\n <p>YELLOW</p>").Replace("<html>", "").Replace("<td>\r\n\r\n                                    <p class=\"RED\"><span class=\"fa fa-circle\"></span></p>", "<td style=\"background-color:#ff0000;\" >\r\n\r\n <p>RED</p>").Replace("<td>\r\n\r\n                                    <p class=\"GREEN\"><span class=\"fa fa-circle\"></span></p>", "<td style=\"background-color:#5eea3f;\" >\r\n\r\n <p>GREEN</p>").Replace("<td>\r\n\r\n                                    <p class=\"NA\"><span class=\"fa fa-circle\"></span></p>", "<td style=\"background-color:#99988e;\" >\r\n\r\n <p>NA</p>");
+            Response.Output.Write(output);
    
             Response.Flush();
             Response.End();

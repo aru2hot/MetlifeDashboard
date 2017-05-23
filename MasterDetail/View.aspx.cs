@@ -803,21 +803,10 @@ public partial class View : Page
         }
 
 
-
-
-
-
-
-        if (gvCustomers.Rows.Count > 0)
-        {
-            //This replaces <td> with <th>    
             gvCustomers.UseAccessibleHeader = true;
             //This will add the <thead> and <tbody> elements    
             gvCustomers.HeaderRow.TableSection = TableRowSection.TableHeader;
-            //This adds the <tfoot> element. Remove if you don't have a footer row    
-            gvCustomers.FooterRow.TableSection = TableRowSection.TableFooter;
-        }
-
+   
 
 
     }
@@ -2300,6 +2289,10 @@ public partial class View : Page
 
             gvOrders.DataBind();
 
+            //This replaces <td> with <th>    
+            gvOrders.UseAccessibleHeader = true;
+            //This will add the <thead> and <tbody> elements    
+            gvOrders.HeaderRow.TableSection = TableRowSection.TableHeader;
 
             //current_release_parent_grid.DataSource = dt3;
 
@@ -2381,6 +2374,8 @@ public partial class View : Page
 
 
         }
+
+      
 
     }
 
