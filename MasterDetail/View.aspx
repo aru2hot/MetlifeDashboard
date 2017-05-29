@@ -160,9 +160,10 @@
                                     <asp:DropDownList runat="server" CssClass="form-control boldtext" ID="ddl_grouping_filter">
                                         <asp:ListItem Value="PORTFOLIO">PORTFOLIO</asp:ListItem>
                                         <asp:ListItem Value="PBM">PBM</asp:ListItem>
-                                        <asp:ListItem Value="Release Name">Release Name</asp:ListItem>
-                                        <asp:ListItem Value="Application Name">Application Name</asp:ListItem>
-                                        <asp:ListItem Value="Release Month">Release Month</asp:ListItem>
+                                        <asp:ListItem Value="Release Name">RELEASE NAME</asp:ListItem>
+                                        <asp:ListItem Value="Application Name">APPLICATION NAME</asp:ListItem>
+                                        <asp:ListItem Value="Release Month">RELEASE MONTH</asp:ListItem>
+                                        <asp:ListItem Value="Program Name">PROGRAM NAME</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                                 <div class="form-group col-md-2">
