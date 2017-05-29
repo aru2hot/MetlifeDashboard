@@ -22,7 +22,7 @@
     <link href="Content/NewStyle.css" rel="stylesheet" />
     <link href="css/ART_Custom_Bootstrap_v4_GENERAL.css" rel="stylesheet" />
     <script src="Scripts/ScrollHeader.js"></script>
-
+    <script src="javascripts/jquery.js"></script>
 </head>
 
 <body>
@@ -94,7 +94,8 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p >&copy; <%: DateTime.Now.Year %> - MetLife</p>
+                <p>
+                    <asp:label runat="server" ID="Placeholder"></asp:label> </p>
             </footer>
         </div>
     </form>

@@ -41,7 +41,7 @@ public partial class SiteMaster : MasterPage
             }
             Response.Cookies.Set(responseCookie);
         }
-
+        
         Page.PreLoad += master_Page_PreLoad;
     }
 
@@ -66,7 +66,17 @@ public partial class SiteMaster : MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        string browser = Request.Browser.Browser;
+        if (browser == "InternetExplorer")
+        {
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Please use Google Chrome for Best results. The Page you are viewing might be broken in Internet Explorer.');", true);
+            Placeholder.Text = "ATTENTION: This website works best in Google Chrome.";
+        }
+        else
+        {
+            Placeholder.Text = "";
+        }
+       
     }
 
     protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)

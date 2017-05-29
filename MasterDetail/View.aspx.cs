@@ -20,7 +20,7 @@ public partial class View : Page
     #region Page_Load
     DAL dal = new DAL();
     protected void Page_Load(object sender, EventArgs e)
-    {
+    {       
 
         if (!IsPostBack)
         {
